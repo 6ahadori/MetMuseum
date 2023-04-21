@@ -1,4 +1,4 @@
-package com.bahadori.metropolitanmuseum.ui.theme
+package com.bahadori.metropolitanmuseum.core.designsystem.theme
 
 import android.app.Activity
 import android.os.Build

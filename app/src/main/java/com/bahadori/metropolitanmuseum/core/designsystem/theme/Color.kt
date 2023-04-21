@@ -1,4 +1,4 @@
-package com.bahadori.metropolitanmuseum.ui.theme
+package com.bahadori.metropolitanmuseum.core.designsystem.theme
 
 import androidx.compose.ui.graphics.Color
 
