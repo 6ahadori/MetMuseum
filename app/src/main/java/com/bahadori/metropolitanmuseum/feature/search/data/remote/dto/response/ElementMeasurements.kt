@@ -9,5 +9,7 @@ data class ElementMeasurements(
     @SerializedName("Height")
     val height: Double?,
     @SerializedName("Width")
-    val width: Double?
+    val width: Double?,
+    @SerializedName("Depth")
+    val depth: Double?
 )
