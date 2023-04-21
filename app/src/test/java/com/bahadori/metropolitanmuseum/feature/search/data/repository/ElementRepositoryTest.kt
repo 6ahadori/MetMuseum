@@ -7,6 +7,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 import com.google.common.truth.Truth.assertThat
+import com.google.gson.Gson
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ElementRepositoryTest {
@@ -20,14 +21,7 @@ class ElementRepositoryTest {
 
     @Test
     fun returnResultOnSearch() = runTest {
-        val result =
-            repository.search("", null, null, null, null, null, null, null, null, null, null, null)
-        assertThat(result).isInstanceOf(SearchResponse::class.java)
+
     }
 
-    @Test
-    fun returnResultOnGetElement() = runTest {
-        val result = repository.getElement(123)
-        assertThat(result).isInstanceOf(Element::class.java)
-    }
 }

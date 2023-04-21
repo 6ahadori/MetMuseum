@@ -1,5 +1,11 @@
 package com.bahadori.metropolitanmuseum.feature.search.data.repository
 
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.Constituent
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.Element
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.ElementMeasurements
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.Measurement
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.Tag
+
 object FakeData {
 
     val searchData = """
@@ -2336,116 +2342,113 @@ object FakeData {
 }
 """.trimIndent()
 
-    val objData = """
-    {
-        "objectID": 369073,
-        "isHighlight": false,
-        "accessionNumber": "25.62.40v",
-        "accessionYear": "1925",
-        "isPublicDomain": true,
-        "primaryImage": "https://images.metmuseum.org/CRDImages/dp/original/DP829088.jpg",
-        "primaryImageSmall": "https://images.metmuseum.org/CRDImages/dp/web-large/DP829088.jpg",
-        "additionalImages": [],
-        "constituents": [
-            {
-                "constituentID": 161858,
-                "role": "Artist",
-                "name": "After Anthony van Dyck",
-                "constituentULAN_URL": "http://vocab.getty.edu/page/ulan/500115190",
-                "constituentWikidata_URL": "https://www.wikidata.org/wiki/Q150679",
-                "gender": ""
-            },
-            {
-                "constituentID": 78986,
-                "role": "Engraver",
-                "name": "Schelte Adams à Bolswert",
-                "constituentULAN_URL": "(not assigned)",
-                "constituentWikidata_URL": "https://www.wikidata.org/wiki/Q2288622",
-                "gender": ""
-            },
-            {
-                "constituentID": 94948,
-                "role": "Publisher",
-                "name": "Martinus van den Enden",
-                "constituentULAN_URL": "http://vocab.getty.edu/page/ulan/500019434",
-                "constituentWikidata_URL": "https://www.wikidata.org/wiki/Q18516716",
-                "gender": ""
-            }
-        ],
-        "department": "Drawings and Prints",
-        "objectName": "Print",
-        "title": "Rest on the Flight into Egypt",
-        "culture": "",
-        "period": "",
-        "dynasty": "",
-        "reign": "",
-        "portfolio": "",
-        "artistRole": "Artist",
-        "artistPrefix": "After",
-        "artistDisplayName": "Anthony van Dyck",
-        "artistDisplayBio": "Flemish, Antwerp 1599–1641 London",
-        "artistSuffix": "",
-        "artistAlphaSort": "Dyck, Anthony van",
-        "artistNationality": "Flemish",
-        "artistBeginDate": "1599",
-        "artistEndDate": "1641",
-        "artistGender": "",
-        "artistWikidata_URL": "https://www.wikidata.org/wiki/Q150679",
-        "artistULAN_URL": "http://vocab.getty.edu/page/ulan/500115190",
-        "objectDate": "1650–59",
-        "objectBeginDate": 1650,
-        "objectEndDate": 1659,
-        "medium": "Engraving, second state",
-        "dimensions": "sheet: 17 3/8 x 22 7/16 in. (44.2 x 57 cm)",
-        "measurements": [
-            {
-                "elementName": "Sheet",
-                "elementDescription": null,
-                "elementMeasurements": {
-                    "Height": 44.2,
-                    "Width": 57
-                }
-            }
-        ],
-        "creditLine": "Harris Brisbane Dick Fund, 1925",
-        "geographyType": "",
-        "city": "",
-        "state": "",
-        "county": "",
-        "country": "",
-        "region": "",
-        "subregion": "",
-        "locale": "",
-        "locus": "",
-        "excavation": "",
-        "river": "",
-        "classification": "Prints",
-        "rightsAndReproduction": "",
-        "linkResource": "",
-        "metadataDate": "2021-08-20T04:36:13.79Z",
-        "repository": "Metropolitan Museum of Art, New York, NY",
-        "objectURL": "https://www.metmuseum.org/art/collection/search/369073",
-        "tags": [
-            {
-                "term": "Men",
-                "AAT_URL": "http://vocab.getty.edu/page/aat/300025928",
-                "Wikidata_URL": "https://www.wikidata.org/wiki/Q8441"
-            },
-            {
-                "term": "Trees",
-                "AAT_URL": "http://vocab.getty.edu/page/aat/300132410",
-                "Wikidata_URL": "https://www.wikidata.org/wiki/Q10884"
-            },
-            {
-                "term": "Madonna and Child",
-                "AAT_URL": "http://vocab.getty.edu/page/ia/901000052",
-                "Wikidata_URL": "https://www.wikidata.org/wiki/Q9309699"
-            }
-        ],
-        "objectWikidata_URL": "",
-        "isTimelineWork": false,
-        "GalleryNumber": ""
-    }
-""".trimIndent()
+    val objectsData = listOf(
+        Element(
+            objectID = 436101,
+            isHighlight = true,
+            accessionNumber = "49.7.21",
+            accessionYear = "1949",
+            isPublicDomain = true,
+            primaryImage = "https://images.metmuseum.org/CRDImages/ep/original/DP-14936-023.jpg",
+            primaryImageSmall = "https://images.metmuseum.org/CRDImages/ep/web-large/DP-14936-023.jpg",
+            additionalImages = listOf(
+                "https://images.metmuseum.org/CRDImages/ep/original/LC-49_7_21-IRR.jpg",
+                "https://images.metmuseum.org/CRDImages/ep/original/LC-49_7_21_Xray.jpg"
+            ),
+            constituents = listOf(
+                Constituent(
+                    constituentID = 161810,
+                    role = "Artist",
+                    name = "Gerard David",
+                    constituentULANURL = "http://vocab.getty.edu/page/ulan/500025998",
+                    constituentWikidataURL = "https://www.wikidata.org/wiki/Q333380",
+                    gender = ""
+                )
+            ),
+            department = "European Paintings",
+            objectName = "Painting",
+            title = "The Rest on the Flight into Egypt",
+            culture = "",
+            period = "",
+            dynasty = "",
+            reign = "",
+            portfolio = "",
+            artistRole = "Artist",
+            artistPrefix = "",
+            artistDisplayName = "Gerard David",
+            artistDisplayBio = "Netherlandish, Oudewater ca. 1455–1523 Bruges",
+            artistSuffix = "",
+            artistAlphaSort = "David, Gerard",
+            artistNationality = "Netherlandish",
+            artistBeginDate = "1455",
+            artistEndDate = "1523",
+            artistGender = "",
+            artistWikidataURL = "https://www.wikidata.org/wiki/Q333380",
+            artistULANURL = "http://vocab.getty.edu/page/ulan/500025998",
+            objectDate = "ca. 1512–15",
+            objectBeginDate = 1512,
+            objectEndDate = 1515,
+            medium = "Oil on wood",
+            dimensions = "21 in. × 15 11/16 in. (53.3 × 39.8 cm)",
+            measurements = listOf(
+                Measurement(
+                    elementName = "Overall",
+                    elementDescription = null,
+                    elementMeasurements = ElementMeasurements(
+                        height = 53.340107,
+                        width = 39.84633,
+                        depth = null
+                    )
+                ),
+                Measurement(
+                    elementName = "Frame",
+                    elementDescription = null,
+                    elementMeasurements = ElementMeasurements(
+                        depth = 6.350013,
+                        height = 70.80264,
+                        width = 57.467613
+                    )
+                )
+            ),
+            creditLine = "The Jules Bache Collection, 1949",
+            geographyType = "",
+            city = "",
+            state = "",
+            county = "",
+            country = "",
+            region = "",
+            subregion = "",
+            locale = "",
+            locus = "",
+            excavation = "",
+            river = "",
+            classification = "Paintings",
+            rightsAndReproduction = "",
+            linkResource = "",
+            metadataDate = "2023-04-18T04:46:43.39Z",
+            repository = "Metropolitan Museum of Art, New York, NY",
+            objectURL = "https://www.metmuseum.org/art/collection/search/436101",
+            tags = listOf(
+                Tag(
+                    term = "Virgin Mary",
+                    aatUrl = "http://vocab.getty.edu/page/ia/901000032",
+                    wikidataUrl = "https://www.wikidata.org/wiki/Q345"
+                ),
+                Tag(
+                    term = "Jesus",
+                    aatUrl = "http://vocab.getty.edu/page/ia/901000087",
+                    wikidataUrl = "https://www.wikidata.org/wiki/Q302"
+                ),
+                Tag(
+                    term = "Nursing",
+                    aatUrl = "http://vocab.getty.edu/page/aat/300379905",
+                    wikidataUrl = "https://www.wikidata.org/wiki/Q174876"
+                )
+            ),
+            objectWikidataURL = "https://www.wikidata.org/wiki/Q19911632",
+            isTimelineWork = true,
+            galleryNumber = ""
+        )
+    )
 
 }

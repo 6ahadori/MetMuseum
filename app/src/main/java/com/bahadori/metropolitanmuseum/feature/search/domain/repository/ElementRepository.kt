@@ -1,4 +1,4 @@
-package com.bahadori.metropolitanmuseum.feature.search.data.repository
+package com.bahadori.metropolitanmuseum.feature.search.domain.repository
 
 import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.Element
 import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.SearchResponse
@@ -18,7 +18,8 @@ interface ElementRepository {
         geoLocation: String?,
         dateBegin: Int?,
         dateEnd: Int?
-    ): SearchResponse
+    ): List<Int>
 
-    suspend fun getElement(objectID: Int?): Element?
+    suspend fun getElements(vararg objectID: Int): Result<List<Element>>
+
 }
