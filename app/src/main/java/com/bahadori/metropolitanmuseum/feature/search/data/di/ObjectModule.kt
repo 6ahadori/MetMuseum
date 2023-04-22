@@ -1,8 +1,8 @@
 package com.bahadori.metropolitanmuseum.feature.search.data.di
 
 import com.bahadori.metropolitanmuseum.core.network.retrofit.MetApi
-import com.bahadori.metropolitanmuseum.feature.search.data.repository.ElementRepositoryImpl
-import com.bahadori.metropolitanmuseum.feature.search.domain.repository.ElementRepository
+import com.bahadori.metropolitanmuseum.feature.search.data.repository.MetObjectRepositoryImpl
+import com.bahadori.metropolitanmuseum.feature.search.domain.repository.MetObjectRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,8 +18,8 @@ object ObjectModule {
     @Singleton
     fun provideElementRepository(
         api: MetApi
-    ): ElementRepository {
-        return ElementRepositoryImpl(api)
+    ): MetObjectRepository {
+        return MetObjectRepositoryImpl(api)
     }
 
 }

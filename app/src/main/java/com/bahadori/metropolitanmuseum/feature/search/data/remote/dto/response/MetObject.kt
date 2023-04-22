@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import androidx.annotation.Keep
 
 @Keep
-data class Element(
+data class MetObject(
     val objectID: Int?,
     val isHighlight: Boolean?,
     val accessionNumber: String?,

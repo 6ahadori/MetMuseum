@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.bahadori.metropolitanmuseum.core.designsystem.preview.ThemePreviews
-import com.bahadori.metropolitanmuseum.core.designsystem.theme.MetropolitanMuseumTheme
+import com.bahadori.metropolitanmuseum.core.designsystem.theme.MetTheme
 
 @Composable
 fun ErrorView(errorMessage: String) {
@@ -30,7 +30,7 @@ fun ErrorView(errorMessage: String) {
 @ThemePreviews
 @Composable
 private fun ErrorViewPrev() {
-    MetropolitanMuseumTheme {
+    MetTheme {
         ErrorView(errorMessage = "An unknown error happened!")
     }
 }

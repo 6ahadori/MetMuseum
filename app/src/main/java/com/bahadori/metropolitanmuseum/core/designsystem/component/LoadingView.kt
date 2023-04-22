@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.bahadori.metropolitanmuseum.core.designsystem.preview.ThemePreviews
-import com.bahadori.metropolitanmuseum.core.designsystem.theme.MetropolitanMuseumTheme
+import com.bahadori.metropolitanmuseum.core.designsystem.theme.MetTheme
 
 @Composable
 fun LoadingView(
@@ -35,7 +35,7 @@ fun LoadingView(
 @ThemePreviews
 @Composable
 private fun LoadingViewPreview() {
-    MetropolitanMuseumTheme {
+    MetTheme {
         Scaffold {
             LoadingView()
         }
