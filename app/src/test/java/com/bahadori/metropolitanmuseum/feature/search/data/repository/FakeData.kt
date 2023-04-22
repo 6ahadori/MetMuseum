@@ -1,12 +1,15 @@
 package com.bahadori.metropolitanmuseum.feature.search.data.repository
 
 import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.Constituent
-import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.Element
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.MetObject
 import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.ElementMeasurements
 import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.Measurement
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.SearchResponse
 import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.Tag
 
 object FakeData {
+
+    val searchResponse = SearchResponse(5, listOf(436101, 437101, 336159, 364690, 434207))
 
     val searchData = """
     {
@@ -2342,8 +2345,115 @@ object FakeData {
 }
 """.trimIndent()
 
+    val metObject = MetObject(
+        objectID = 436101,
+        isHighlight = true,
+        accessionNumber = "49.7.21",
+        accessionYear = "1949",
+        isPublicDomain = true,
+        primaryImage = "https://images.metmuseum.org/CRDImages/ep/original/DP-14936-023.jpg",
+        primaryImageSmall = "https://images.metmuseum.org/CRDImages/ep/web-large/DP-14936-023.jpg",
+        additionalImages = listOf(
+            "https://images.metmuseum.org/CRDImages/ep/original/LC-49_7_21-IRR.jpg",
+            "https://images.metmuseum.org/CRDImages/ep/original/LC-49_7_21_Xray.jpg"
+        ),
+        constituents = listOf(
+            Constituent(
+                constituentID = 161810,
+                role = "Artist",
+                name = "Gerard David",
+                constituentULANURL = "http://vocab.getty.edu/page/ulan/500025998",
+                constituentWikidataURL = "https://www.wikidata.org/wiki/Q333380",
+                gender = ""
+            )
+        ),
+        department = "European Paintings",
+        objectName = "Painting",
+        title = "The Rest on the Flight into Egypt",
+        culture = "",
+        period = "",
+        dynasty = "",
+        reign = "",
+        portfolio = "",
+        artistRole = "Artist",
+        artistPrefix = "",
+        artistDisplayName = "Gerard David",
+        artistDisplayBio = "Netherlandish, Oudewater ca. 1455–1523 Bruges",
+        artistSuffix = "",
+        artistAlphaSort = "David, Gerard",
+        artistNationality = "Netherlandish",
+        artistBeginDate = "1455",
+        artistEndDate = "1523",
+        artistGender = "",
+        artistWikidataURL = "https://www.wikidata.org/wiki/Q333380",
+        artistULANURL = "http://vocab.getty.edu/page/ulan/500025998",
+        objectDate = "ca. 1512–15",
+        objectBeginDate = 1512,
+        objectEndDate = 1515,
+        medium = "Oil on wood",
+        dimensions = "21 in. × 15 11/16 in. (53.3 × 39.8 cm)",
+        measurements = listOf(
+            Measurement(
+                elementName = "Overall",
+                elementDescription = null,
+                elementMeasurements = ElementMeasurements(
+                    height = 53.340107,
+                    width = 39.84633,
+                    depth = null
+                )
+            ),
+            Measurement(
+                elementName = "Frame",
+                elementDescription = null,
+                elementMeasurements = ElementMeasurements(
+                    depth = 6.350013,
+                    height = 70.80264,
+                    width = 57.467613
+                )
+            )
+        ),
+        creditLine = "The Jules Bache Collection, 1949",
+        geographyType = "",
+        city = "",
+        state = "",
+        county = "",
+        country = "",
+        region = "",
+        subregion = "",
+        locale = "",
+        locus = "",
+        excavation = "",
+        river = "",
+        classification = "Paintings",
+        rightsAndReproduction = "",
+        linkResource = "",
+        metadataDate = "2023-04-18T04:46:43.39Z",
+        repository = "Metropolitan Museum of Art, New York, NY",
+        objectURL = "https://www.metmuseum.org/art/collection/search/436101",
+        tags = listOf(
+            Tag(
+                term = "Virgin Mary",
+                aatUrl = "http://vocab.getty.edu/page/ia/901000032",
+                wikidataUrl = "https://www.wikidata.org/wiki/Q345"
+            ),
+            Tag(
+                term = "Jesus",
+                aatUrl = "http://vocab.getty.edu/page/ia/901000087",
+                wikidataUrl = "https://www.wikidata.org/wiki/Q302"
+            ),
+            Tag(
+                term = "Nursing",
+                aatUrl = "http://vocab.getty.edu/page/aat/300379905",
+                wikidataUrl = "https://www.wikidata.org/wiki/Q174876"
+            )
+        ),
+        objectWikidataURL = "https://www.wikidata.org/wiki/Q19911632",
+        isTimelineWork = true,
+        galleryNumber = ""
+    )
+
     val objectsData = listOf(
-        Element(
+        MetObject(
             objectID = 436101,
             isHighlight = true,
             accessionNumber = "49.7.21",

@@ -1,7 +1,5 @@
 package com.bahadori.metropolitanmuseum.core.network.retrofit
 
-import com.bahadori.metropolitanmuseum.BuildConfig
-
 object NetworkConstants {
-
+    const val PAGE_SIZE = 10
 }
