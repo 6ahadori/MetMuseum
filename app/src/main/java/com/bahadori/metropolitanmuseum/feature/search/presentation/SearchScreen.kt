@@ -35,6 +35,7 @@ import com.bahadori.metropolitanmuseum.common.loading.justLoading
 import com.bahadori.metropolitanmuseum.core.designsystem.component.LoadingView
 import com.bahadori.metropolitanmuseum.core.designsystem.component.MetTextField
 import com.bahadori.metropolitanmuseum.feature.search.presentation.SearchContract.*
+import com.bahadori.metropolitanmuseum.feature.search.presentation.component.MetObjectView
 
 @Composable
 internal fun SearchRoute(
@@ -72,7 +73,7 @@ internal fun SearchScreen(
                 onValueChange = onQueryChanged
             )
             LazyVerticalGrid(
-                columns = GridCells.Adaptive(300.dp),
+                columns = GridCells.Adaptive(120.dp),
                 contentPadding = PaddingValues(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalArrangement = Arrangement.spacedBy(24.dp),
@@ -86,7 +87,9 @@ internal fun SearchScreen(
                     if (index >= state.objects.size - 1 && !state.endReached && !state.loading.justLoading) {
                         onLoadObjects()
                     }
-                    Text(text = item.objectName.toString())
+                    MetObjectView(item) {
+
+                    }
                 }
                 item {
                     if (state.loading.justLoading && state.objects.isNotEmpty()) {
@@ -111,15 +114,9 @@ internal fun SearchScreen(
                 targetOffsetY = { fullHeight -> -fullHeight },
             ) + fadeOut(),
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp),
-            ) {
-                LoadingView(
-                    modifier = Modifier.align(Alignment.Center),
-                )
-            }
+            LoadingView(
+                modifier = Modifier.align(Alignment.Center),
+            )
         }
     }
 }

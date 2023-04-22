@@ -64,7 +64,6 @@ class SearchViewModel @Inject constructor(
 
     override fun event(event: SearchContract.Event) {
         when (event) {
-            is SearchContract.Event.OnObjectClicked -> TODO()
             is SearchContract.Event.OnQueryEntered -> {
                 searchJob?.cancel()
                 _state.update {

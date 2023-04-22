@@ -8,14 +8,13 @@ interface SearchContract : UnidirectionalViewModel<SearchContract.Event, SearchC
 
     data class State(
         val objects: List<MetObject> = listOf(),
-        val query: String = "",
+        val query: String = "egypt",
         val page: Int = 1,
         val loading: LoadState = LoadState.Loading(false),
         val endReached: Boolean = false,
     )
 
     sealed class Event {
-        data class OnObjectClicked(val `object`: MetObject) : Event()
         data class OnQueryEntered(val query: String) : Event()
         object OnLoadMore : Event()
     }
