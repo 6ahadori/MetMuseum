@@ -27,6 +27,9 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
+/**
+ * Module for Coroutine Dispatchers which is divided into 2 Dispatchers: IO & Default
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object DispatchersModule {
