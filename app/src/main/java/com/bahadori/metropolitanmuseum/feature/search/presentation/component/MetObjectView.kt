@@ -13,13 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.bahadori.metropolitanmuseum.R
 import com.bahadori.metropolitanmuseum.core.designsystem.component.DynamicAsyncImage
-import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.MetObject
+import com.bahadori.metropolitanmuseum.model.data.MetObject
 
 @ExperimentalMaterial3Api
 @Composable

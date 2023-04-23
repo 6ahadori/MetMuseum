@@ -2,7 +2,7 @@ package com.bahadori.metropolitanmuseum.core.network.retrofit
 
 import com.bahadori.metropolitanmuseum.core.network.retrofit.Endpoints.GET_OBJECTS
 import com.bahadori.metropolitanmuseum.core.network.retrofit.Endpoints.SEARCH
-import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.MetObject
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.MetObjectDto
 import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.SearchResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -27,6 +27,6 @@ interface MetApi {
     ): Response<SearchResponse>
 
     @GET(GET_OBJECTS)
-    suspend fun getObject(@Path("objectID") objectID: Int): MetObject
+    suspend fun getObject(@Path("objectID") objectID: Int): MetObjectDto
 
 }

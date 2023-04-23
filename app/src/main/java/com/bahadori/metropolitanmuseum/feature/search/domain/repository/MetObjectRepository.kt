@@ -1,6 +1,6 @@
 package com.bahadori.metropolitanmuseum.feature.search.domain.repository
 
-import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.MetObject
+import com.bahadori.metropolitanmuseum.model.data.MetObject
 
 interface MetObjectRepository {
 
