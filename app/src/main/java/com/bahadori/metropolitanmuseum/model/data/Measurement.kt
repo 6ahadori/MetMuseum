@@ -1,9 +1,6 @@
-package com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response
+package com.bahadori.metropolitanmuseum.model.data
 
 
-import androidx.annotation.Keep
-
-@Keep
 data class Measurement(
     val elementName: String?,
     val elementDescription: String?,

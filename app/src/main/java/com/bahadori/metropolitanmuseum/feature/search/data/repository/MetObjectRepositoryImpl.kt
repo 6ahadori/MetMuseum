@@ -1,8 +1,11 @@
 package com.bahadori.metropolitanmuseum.feature.search.data.repository
 
+import com.bahadori.metropolitanmuseum.core.database.dao.MetObjectDao
+import com.bahadori.metropolitanmuseum.core.database.model.asMetObject
 import com.bahadori.metropolitanmuseum.core.network.retrofit.MetApi
-import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.MetObject
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.asMetObjectEntity
 import com.bahadori.metropolitanmuseum.feature.search.domain.repository.MetObjectRepository
+import com.bahadori.metropolitanmuseum.model.data.MetObject
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -10,6 +13,7 @@ import kotlinx.coroutines.supervisorScope
 
 class MetObjectRepositoryImpl(
     private val api: MetApi,
+    private val dao: MetObjectDao
 ) : MetObjectRepository {
 
     override suspend fun search(
@@ -48,7 +52,14 @@ class MetObjectRepositoryImpl(
             objectID.forEach { id ->
                 val `object` = async {
                     try {
-                        api.getObject(id)
+                        val cacheObject = dao.getObject(id)
+                        if (cacheObject == null) {
+                            val networkObject = api.getObject(id).asMetObjectEntity()
+                            dao.insertObject(networkObject)
+                            networkObject.asMetObject()
+                        } else {
+                            cacheObject.asMetObject()
+                        }
                     } catch (e: Throwable) {
                         null
                     }

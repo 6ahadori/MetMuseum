@@ -1,20 +1,15 @@
-package com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response
+package com.bahadori.metropolitanmuseum.model.data
 
 
-import com.google.gson.annotations.SerializedName
-import androidx.annotation.Keep
 
-@Keep
 data class MetObject(
     val objectID: Int?,
     val isHighlight: Boolean?,
     val accessionNumber: String?,
     val accessionYear: String?,
-    val isPublicDomain: Boolean?,
     val primaryImage: String?,
-    val primaryImageSmall: String?,
-    val additionalImages: List<Any?>?,
-    val constituents: List<Constituent?>?,
+    val additionalImages: List<String>?,
+    val constituents: List<Constituent>?,
     val department: String?,
     val objectName: String?,
     val title: String?,
@@ -33,16 +28,14 @@ data class MetObject(
     val artistBeginDate: String?,
     val artistEndDate: String?,
     val artistGender: String?,
-    @SerializedName("artistWikidata_URL")
     val artistWikidataURL: String?,
-    @SerializedName("artistULAN_URL")
     val artistULANURL: String?,
     val objectDate: String?,
     val objectBeginDate: Int?,
     val objectEndDate: Int?,
     val medium: String?,
     val dimensions: String?,
-    val measurements: List<Measurement?>?,
+    val measurements: List<Measurement>?,
     val creditLine: String?,
     val geographyType: String?,
     val city: String?,
@@ -61,10 +54,6 @@ data class MetObject(
     val metadataDate: String?,
     val repository: String?,
     val objectURL: String?,
-    val tags: List<Tag?>?,
-    @SerializedName("objectWikidata_URL")
-    val objectWikidataURL: String?,
-    val isTimelineWork: Boolean?,
-    @SerializedName("GalleryNumber")
-    val galleryNumber: String?
+    val tags: List<Tag>?,
+    val objectWikidataUrl: String?,
 )

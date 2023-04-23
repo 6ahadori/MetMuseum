@@ -1,15 +1,13 @@
 package com.bahadori.metropolitanmuseum.feature.search.data.repository
 
-import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.Constituent
-import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.MetObject
-import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.ElementMeasurements
-import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.Measurement
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.ConstituentDto
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.MetObjectDto
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.ElementMeasurementsDto
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.MeasurementDto
 import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.SearchResponse
-import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.Tag
+import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.TagDto
 
 object FakeData {
-
-    val searchResponse = SearchResponse(5, listOf(436101, 437101, 336159, 364690, 434207))
 
     val searchData = """
     {
@@ -2345,20 +2343,18 @@ object FakeData {
 }
 """.trimIndent()
 
-    val metObject = MetObject(
+    val metObjectDto = MetObjectDto(
         objectID = 436101,
         isHighlight = true,
         accessionNumber = "49.7.21",
         accessionYear = "1949",
-        isPublicDomain = true,
         primaryImage = "https://images.metmuseum.org/CRDImages/ep/original/DP-14936-023.jpg",
-        primaryImageSmall = "https://images.metmuseum.org/CRDImages/ep/web-large/DP-14936-023.jpg",
         additionalImages = listOf(
             "https://images.metmuseum.org/CRDImages/ep/original/LC-49_7_21-IRR.jpg",
             "https://images.metmuseum.org/CRDImages/ep/original/LC-49_7_21_Xray.jpg"
         ),
         constituents = listOf(
-            Constituent(
+            ConstituentDto(
                 constituentID = 161810,
                 role = "Artist",
                 name = "Gerard David",
@@ -2393,19 +2389,19 @@ object FakeData {
         medium = "Oil on wood",
         dimensions = "21 in. × 15 11/16 in. (53.3 × 39.8 cm)",
         measurements = listOf(
-            Measurement(
+            MeasurementDto(
                 elementName = "Overall",
                 elementDescription = null,
-                elementMeasurements = ElementMeasurements(
+                elementMeasurements = ElementMeasurementsDto(
                     height = 53.340107,
                     width = 39.84633,
                     depth = null
                 )
             ),
-            Measurement(
+            MeasurementDto(
                 elementName = "Frame",
                 elementDescription = null,
-                elementMeasurements = ElementMeasurements(
+                elementMeasurements = ElementMeasurementsDto(
                     depth = 6.350013,
                     height = 70.80264,
                     width = 57.467613
@@ -2431,42 +2427,38 @@ object FakeData {
         repository = "Metropolitan Museum of Art, New York, NY",
         objectURL = "https://www.metmuseum.org/art/collection/search/436101",
         tags = listOf(
-            Tag(
+            TagDto(
                 term = "Virgin Mary",
                 aatUrl = "http://vocab.getty.edu/page/ia/901000032",
                 wikidataUrl = "https://www.wikidata.org/wiki/Q345"
             ),
-            Tag(
+            TagDto(
                 term = "Jesus",
                 aatUrl = "http://vocab.getty.edu/page/ia/901000087",
                 wikidataUrl = "https://www.wikidata.org/wiki/Q302"
             ),
-            Tag(
+            TagDto(
                 term = "Nursing",
                 aatUrl = "http://vocab.getty.edu/page/aat/300379905",
                 wikidataUrl = "https://www.wikidata.org/wiki/Q174876"
             )
         ),
-        objectWikidataURL = "https://www.wikidata.org/wiki/Q19911632",
-        isTimelineWork = true,
-        galleryNumber = ""
+        objectWikidataUrl = "https://www.wikidata.org/wiki/Q19911632",
     )
 
     val objectsData = listOf(
-        MetObject(
+        MetObjectDto(
             objectID = 436101,
             isHighlight = true,
             accessionNumber = "49.7.21",
             accessionYear = "1949",
-            isPublicDomain = true,
             primaryImage = "https://images.metmuseum.org/CRDImages/ep/original/DP-14936-023.jpg",
-            primaryImageSmall = "https://images.metmuseum.org/CRDImages/ep/web-large/DP-14936-023.jpg",
             additionalImages = listOf(
                 "https://images.metmuseum.org/CRDImages/ep/original/LC-49_7_21-IRR.jpg",
                 "https://images.metmuseum.org/CRDImages/ep/original/LC-49_7_21_Xray.jpg"
             ),
             constituents = listOf(
-                Constituent(
+                ConstituentDto(
                     constituentID = 161810,
                     role = "Artist",
                     name = "Gerard David",
@@ -2501,19 +2493,19 @@ object FakeData {
             medium = "Oil on wood",
             dimensions = "21 in. × 15 11/16 in. (53.3 × 39.8 cm)",
             measurements = listOf(
-                Measurement(
+                MeasurementDto(
                     elementName = "Overall",
                     elementDescription = null,
-                    elementMeasurements = ElementMeasurements(
+                    elementMeasurements = ElementMeasurementsDto(
                         height = 53.340107,
                         width = 39.84633,
                         depth = null
                     )
                 ),
-                Measurement(
+                MeasurementDto(
                     elementName = "Frame",
                     elementDescription = null,
-                    elementMeasurements = ElementMeasurements(
+                    elementMeasurements = ElementMeasurementsDto(
                         depth = 6.350013,
                         height = 70.80264,
                         width = 57.467613
@@ -2539,25 +2531,23 @@ object FakeData {
             repository = "Metropolitan Museum of Art, New York, NY",
             objectURL = "https://www.metmuseum.org/art/collection/search/436101",
             tags = listOf(
-                Tag(
+                TagDto(
                     term = "Virgin Mary",
                     aatUrl = "http://vocab.getty.edu/page/ia/901000032",
                     wikidataUrl = "https://www.wikidata.org/wiki/Q345"
                 ),
-                Tag(
+                TagDto(
                     term = "Jesus",
                     aatUrl = "http://vocab.getty.edu/page/ia/901000087",
                     wikidataUrl = "https://www.wikidata.org/wiki/Q302"
                 ),
-                Tag(
+                TagDto(
                     term = "Nursing",
                     aatUrl = "http://vocab.getty.edu/page/aat/300379905",
                     wikidataUrl = "https://www.wikidata.org/wiki/Q174876"
                 )
             ),
-            objectWikidataURL = "https://www.wikidata.org/wiki/Q19911632",
-            isTimelineWork = true,
-            galleryNumber = ""
+            objectWikidataUrl = "https://www.wikidata.org/wiki/Q19911632",
         )
     )
 
