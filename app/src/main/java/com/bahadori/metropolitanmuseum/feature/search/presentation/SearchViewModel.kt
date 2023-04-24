@@ -36,7 +36,7 @@ class SearchViewModel @Inject constructor(
             _state.update {
                 it.copy(page = 1, endReached = false)
             }
-            metObjectRepository.search(state.value.query)
+            metObjectRepository.search(state.value.query.trim())
         },
         onRequest = { ids ->
             metObjectRepository.getMetObjects(*ids.toIntArray())
@@ -66,7 +66,7 @@ class SearchViewModel @Inject constructor(
         when (event) {
             is SearchContract.Event.OnQueryEntered -> {
                 if (state.value.query != event.query) {
-                    searchJob?.cancel()
+//                    searchJob?.cancel()
                     _state.update {
                         it.copy(query = event.query)
                     }
