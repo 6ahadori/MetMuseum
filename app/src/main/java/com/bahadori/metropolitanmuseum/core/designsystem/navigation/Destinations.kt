@@ -5,7 +5,7 @@ import com.bahadori.metropolitanmuseum.feature.detail.navigation.detailNavigatio
 import com.bahadori.metropolitanmuseum.feature.search.navigation.searchNavigationRoute
 
 sealed class Destinations(val route: String, val titleTextId: Int) {
-    object SearchScreen : Destinations(searchNavigationRoute, R.string.search_screen)
+    object SearchScreen : Destinations(searchNavigationRoute, R.string.metropolitan_museum)
     object DetailScreen : Destinations(detailNavigationRoute, R.string.detail_screen)
 
     companion object {

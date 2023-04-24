@@ -1,4 +1,4 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
+@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 
 package com.bahadori.metropolitanmuseum.feature.search.presentation
 
@@ -7,6 +7,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,13 +20,24 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -34,6 +46,8 @@ import com.bahadori.metropolitanmuseum.common.loading.LoadState
 import com.bahadori.metropolitanmuseum.common.loading.justLoading
 import com.bahadori.metropolitanmuseum.core.designsystem.component.LoadingView
 import com.bahadori.metropolitanmuseum.core.designsystem.component.MetTextField
+import com.bahadori.metropolitanmuseum.core.designsystem.component.StatusBarColor
+import com.bahadori.metropolitanmuseum.core.designsystem.component.fadeEdge
 import com.bahadori.metropolitanmuseum.feature.search.presentation.SearchContract.*
 import com.bahadori.metropolitanmuseum.feature.search.presentation.component.MetObjectView
 
@@ -67,13 +81,29 @@ internal fun SearchScreen(
 ) {
 
     val gridState = rememberLazyGridState()
+    val keyboardController = LocalSoftwareKeyboardController.current
+
+    StatusBarColor(darkIcons = !isSystemInDarkTheme())
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
             MetTextField(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp),
                 label = R.string.search,
                 value = state.query,
-                onValueChange = onQueryChanged
+                trailingIcon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_search),
+                        contentDescription = stringResource(id = R.string.search_icon)
+                    )
+                },
+                onValueChange = onQueryChanged,
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+                keyboardActions = KeyboardActions(
+                    onSearch = { keyboardController?.hide() }
+                ),
             )
             LazyVerticalGrid(
                 columns = GridCells.Adaptive(120.dp),
@@ -81,6 +111,7 @@ internal fun SearchScreen(
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalArrangement = Arrangement.spacedBy(24.dp),
                 modifier = Modifier
+                    .padding(top = 16.dp)
                     .fillMaxSize()
                     .testTag("search"),
                 state = gridState,
@@ -109,6 +140,7 @@ internal fun SearchScreen(
             }
         }
         AnimatedVisibility(
+            modifier = Modifier.align(Alignment.Center),
             visible = state.loading.justLoading && state.objects.isEmpty(),
             enter = slideInVertically(
                 initialOffsetY = { fullHeight -> -fullHeight },

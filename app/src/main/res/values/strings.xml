@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Metropolitan Museum</string>
-    <string name="untitled">" "</string>
+    <string name="untitled">"Untitled"</string>
     <string name="search_screen">Search</string>
     <string name="detail_screen">Detail</string>
-    <string name="search">Search</string>
+    <string name="search">Search art object…</string>
+    <string name="metropolitan_museum">Metropolitan Museum Guide</string>
+    <string name="search_icon">Search Icon\n</string>
 </resources>

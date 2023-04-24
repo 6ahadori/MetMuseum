@@ -3,19 +3,25 @@
 package com.bahadori.metropolitanmuseum.core.designsystem.component
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.background
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.bahadori.metropolitanmuseum.R
 import com.bahadori.metropolitanmuseum.core.designsystem.icon.MetIcons
@@ -54,7 +60,7 @@ fun MetTopAppBar(
             }
         },
         colors = colors,
-        modifier = modifier.testTag("niaTopAppBar"),
+        modifier = modifier,
     )
 }
 
@@ -65,25 +71,21 @@ fun MetTopAppBar(
 @Composable
 fun MetTopAppBar(
     @StringRes titleRes: Int,
-//    actionIcon: ImageVector,
-//    actionIconContentDescription: String?,
     modifier: Modifier = Modifier,
-    colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
-//    onActionClick: () -> Unit = {},
+    colors: TopAppBarColors = TopAppBarDefaults.smallTopAppBarColors(),
 ) {
-    CenterAlignedTopAppBar(
-        title = { Text(text = stringResource(id = titleRes)) },
-//        actions = {
-//            IconButton(onClick = onActionClick) {
-//                Icon(
-//                    imageVector = actionIcon,
-//                    contentDescription = actionIconContentDescription,
-//                    tint = MaterialTheme.colorScheme.onSurface,
-//                )
-//            }
-//        },
+    TopAppBar(
+        title = {
+            Text(
+                text = stringResource(id = titleRes),
+                style = MaterialTheme.typography.headlineSmall.copy(
+                    fontFamily = FontFamily.Cursive,
+                    fontWeight = FontWeight.Black
+                ),
+            )
+        },
         colors = colors,
-        modifier = modifier.testTag("niaTopAppBar"),
+        modifier = modifier,
     )
 }
 
@@ -92,10 +94,6 @@ fun MetTopAppBar(
 @Composable
 private fun MetTopAppBarPreview() {
     MetTopAppBar(
-        titleRes = R.string.untitled,
-        navigationIcon = MetIcons.Search,
-        navigationIconContentDescription = "Navigation icon",
-        actionIcon = MetIcons.MoreVert,
-        actionIconContentDescription = "Action icon",
+        titleRes = R.string.untitled
     )
 }

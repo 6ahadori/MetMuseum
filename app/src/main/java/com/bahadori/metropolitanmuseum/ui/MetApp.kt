@@ -64,11 +64,6 @@ fun MetApp(
 
     MetBackground {
         val snackbarHostState = remember { SnackbarHostState() }
-        val systemUiController: SystemUiController = rememberSystemUiController()
-        systemUiController.isStatusBarVisible = false
-        SideEffect {
-            systemUiController.setStatusBarColor(color = Color.Transparent, darkIcons = false)
-        }
         Scaffold(
             modifier = Modifier.semantics {
                 testTagsAsResourceId = true
@@ -93,7 +88,7 @@ fun MetApp(
                 if (destination != null)
                     MetTopAppBar(
                         titleRes = destination.titleTextId,
-                        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                        colors = TopAppBarDefaults.smallTopAppBarColors(
                             containerColor = Color.Transparent,
                         ),
                     )
