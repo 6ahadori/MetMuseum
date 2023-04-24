@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.bahadori.metropolitanmuseum.feature.detail.navigation.detailScreen
+import com.bahadori.metropolitanmuseum.feature.detail.navigation.navigateToDetail
 import com.bahadori.metropolitanmuseum.feature.search.navigation.searchNavigationRoute
 import com.bahadori.metropolitanmuseum.feature.search.navigation.searchScreen
 
@@ -18,6 +20,11 @@ fun MetNavHost(
         startDestination = startDestination,
         modifier = modifier,
     ) {
-        searchScreen()
+        searchScreen(
+            onObjectClicked = { id ->
+                navController.navigateToDetail(id)
+            }
+        )
+        detailScreen()
     }
 }

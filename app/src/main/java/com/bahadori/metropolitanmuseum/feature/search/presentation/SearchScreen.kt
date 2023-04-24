@@ -39,6 +39,7 @@ import com.bahadori.metropolitanmuseum.feature.search.presentation.component.Met
 
 @Composable
 internal fun SearchRoute(
+    onObjectClicked: (Int) -> Unit,
     viewModel: SearchViewModel = hiltViewModel(),
 ) {
 
@@ -51,7 +52,8 @@ internal fun SearchRoute(
         },
         onLoadObjects = {
             viewModel.event(Event.OnLoadMore)
-        }
+        },
+        onObjectClicked = onObjectClicked
     )
 
 }
@@ -60,7 +62,8 @@ internal fun SearchRoute(
 internal fun SearchScreen(
     state: State,
     onQueryChanged: (String) -> Unit,
-    onLoadObjects: () -> Unit
+    onLoadObjects: () -> Unit,
+    onObjectClicked: (Int) -> Unit,
 ) {
 
     val gridState = rememberLazyGridState()
@@ -87,8 +90,8 @@ internal fun SearchScreen(
                     if (index >= state.objects.size - 1 && !state.endReached && !state.loading.justLoading) {
                         onLoadObjects()
                     }
-                    MetObjectView(item) {
-
+                    MetObjectView(item) { obj ->
+                        onObjectClicked(obj.objectID)
                     }
                 }
                 item {

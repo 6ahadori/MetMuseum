@@ -34,7 +34,7 @@ class SearchViewModel @Inject constructor(
         },
         onLoadAllObjects = {
             _state.update {
-                it.copy(page = 1)
+                it.copy(page = 1, endReached = false)
             }
             metObjectRepository.search(state.value.query)
         },
@@ -65,12 +65,14 @@ class SearchViewModel @Inject constructor(
     override fun event(event: SearchContract.Event) {
         when (event) {
             is SearchContract.Event.OnQueryEntered -> {
-                searchJob?.cancel()
-                _state.update {
-                    it.copy(query = event.query)
-                }
-                searchJob = viewModelScope.launch {
-                    paginator.loadAllObjectIDs()
+                if (state.value.query != event.query) {
+                    searchJob?.cancel()
+                    _state.update {
+                        it.copy(query = event.query)
+                    }
+                    searchJob = viewModelScope.launch {
+                        paginator.loadAllObjectIDs()
+                    }
                 }
             }
 

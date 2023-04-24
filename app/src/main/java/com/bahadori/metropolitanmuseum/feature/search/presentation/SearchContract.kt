@@ -8,7 +8,7 @@ interface SearchContract : UnidirectionalViewModel<SearchContract.Event, SearchC
 
     data class State(
         val objects: List<MetObject> = listOf(),
-        val query: String = "egypt",
+        val query: String = "",
         val page: Int = 1,
         val loading: LoadState = LoadState.Loading(false),
         val endReached: Boolean = false,

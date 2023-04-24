@@ -64,7 +64,7 @@ data class MetObjectEntity(
 )
 
 fun MetObjectEntity.asMetObject() = MetObject(
-    objectID = objectID,
+    objectID = objectID ?: -1,
     isHighlight = isHighlight,
     accessionNumber = accessionNumber,
     accessionYear = accessionYear,

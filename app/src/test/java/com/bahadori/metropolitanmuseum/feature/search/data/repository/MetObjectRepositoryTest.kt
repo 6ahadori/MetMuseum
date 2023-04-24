@@ -6,6 +6,7 @@ import com.bahadori.metropolitanmuseum.core.network.retrofit.MetApi
 import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.MetObjectDto
 import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.SearchResponse
 import com.bahadori.metropolitanmuseum.feature.search.data.remote.dto.response.asMetObjectEntity
+import com.bahadori.metropolitanmuseum.model.data.MetObject
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -21,6 +22,7 @@ import org.mockito.Mockito.times
 import org.mockito.Mockito.verify
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
+import org.mockito.kotlin.any
 import org.mockito.kotlin.anyOrNull
 import retrofit2.Response
 
@@ -214,4 +216,85 @@ class MetObjectRepositoryImplTest {
         Mockito.verifyNoInteractions(dao)
         Mockito.verifyNoInteractions(api)
     }
+
+    @Test
+    fun testGetMetObjectWithValidCacheObject_returnsSuccessResult() = runTest {
+        // Given
+        val objectID = 123
+        val cacheObject = FakeData.metObjectDto.copy(objectID = objectID).asMetObjectEntity()
+        `when`(dao.getObject(objectID)).thenReturn(cacheObject)
+
+        // When
+        val result = repository.getMetObject(objectID)
+
+        // Then
+        assertThat(result.isSuccess).isTrue()
+        assertThat(result).isEqualTo(Result.success(cacheObject.asMetObject()))
+        verify(dao, times(1)).getObject(objectID)
+        verify(api, never()).getObject(anyInt())
+        verify(dao, never()).insertObject(any())
+    }
+
+    @Test
+    fun `testGetMetObjectWithCacheMissFetchesFromNetworkAndStoresInCache`() = runTest {
+        // Given
+        val objectID = 123
+        val networkObject = FakeData.metObjectDto.copy(objectID = objectID)
+        `when`(dao.getObject(objectID)).thenReturn(null)
+        `when`(api.getObject(objectID)).thenReturn(networkObject)
+
+        // When
+        val result = repository.getMetObject(objectID)
+
+        // Then
+        assertThat(result.isSuccess).isTrue()
+        assertThat(result).isEqualTo(
+            Result.success(
+                networkObject.asMetObjectEntity().asMetObject()
+            )
+        )
+        verify(dao, times(1)).getObject(objectID)
+        verify(api, times(1)).getObject(objectID)
+        verify(dao, times(1)).insertObject(networkObject.asMetObjectEntity())
+    }
+
+    @Test
+    fun `testGetMetObjectWithNetworkError_returnsFailureResult`() = runTest {
+        // Given
+        val objectID = 123
+        val networkError = Throwable("Network error")
+        `when`(dao.getObject(objectID)).thenReturn(null)
+        `when`(api.getObject(objectID)).thenAnswer { throw networkError }
+
+        // When
+        val result = repository.getMetObject(objectID)
+
+        // Then
+        assertThat(result.isFailure).isTrue()
+        assertThat(result.exceptionOrNull() is Throwable).isTrue()
+        assertThat(result).isEqualTo(Result.failure<MetObject>(networkError))
+        verify(dao, times(1)).getObject(objectID)
+        verify(api, times(1)).getObject(objectID)
+        verify(dao, never()).insertObject(any())
+    }
+
+    @Test
+    fun `testGetMetObjectWithDatabaseError_returnsFailureResult`() = runTest {
+        // Given
+        val objectID = 123
+        val databaseError = Throwable("Database error")
+        `when`(dao.getObject(objectID)).thenAnswer { throw databaseError }
+
+        // When
+        val result = repository.getMetObject(objectID)
+
+        // Then
+        assertThat(result.isFailure).isTrue()
+        assertThat(result.exceptionOrNull() is Throwable).isTrue()
+        assertThat(result).isEqualTo(Result.failure<MetObject>(databaseError))
+        verify(dao, times(1)).getObject(objectID)
+        verify(api, never()).getObject(any())
+        verify(dao, never()).insertObject(any())
+    }
+
 }

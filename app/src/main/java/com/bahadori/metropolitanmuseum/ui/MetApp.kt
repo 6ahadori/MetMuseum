@@ -24,6 +24,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -45,6 +46,8 @@ import com.bahadori.metropolitanmuseum.core.designsystem.component.MetBackground
 import com.bahadori.metropolitanmuseum.core.designsystem.component.MetTopAppBar
 import com.bahadori.metropolitanmuseum.core.designsystem.icon.MetIcons
 import com.bahadori.metropolitanmuseum.navigation.MetNavHost
+import com.google.accompanist.systemuicontroller.SystemUiController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @OptIn(
     ExperimentalMaterial3Api::class,
@@ -61,7 +64,11 @@ fun MetApp(
 
     MetBackground {
         val snackbarHostState = remember { SnackbarHostState() }
-
+        val systemUiController: SystemUiController = rememberSystemUiController()
+        systemUiController.isStatusBarVisible = false
+        SideEffect {
+            systemUiController.setStatusBarColor(color = Color.Transparent, darkIcons = false)
+        }
         Scaffold(
             modifier = Modifier.semantics {
                 testTagsAsResourceId = true

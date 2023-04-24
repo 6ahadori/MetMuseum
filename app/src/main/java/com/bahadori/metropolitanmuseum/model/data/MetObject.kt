@@ -3,7 +3,7 @@ package com.bahadori.metropolitanmuseum.model.data
 
 
 data class MetObject(
-    val objectID: Int?,
+    val objectID: Int,
     val isHighlight: Boolean?,
     val accessionNumber: String?,
     val accessionYear: String?,

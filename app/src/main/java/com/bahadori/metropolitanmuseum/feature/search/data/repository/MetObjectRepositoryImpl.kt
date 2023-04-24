@@ -12,8 +12,7 @@ import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.supervisorScope
 
 class MetObjectRepositoryImpl(
-    private val api: MetApi,
-    private val dao: MetObjectDao
+    private val api: MetApi, private val dao: MetObjectDao
 ) : MetObjectRepository {
 
     override suspend fun search(
@@ -30,17 +29,30 @@ class MetObjectRepositoryImpl(
         dateBegin: Int?,
         dateEnd: Int?
     ): List<Int> {
-        if (query.isNullOrBlank())
-            return emptyList()
+        if (query.isNullOrBlank()) return emptyList()
 
-        val searchResponse = api.search(
-            query, isHighlight, title, tags, departmentId, isOnView,
-            artistOrCulture, medium, hasImages, geoLocation, dateBegin, dateEnd
-        )
+        return try {
+            val searchResponse = api.search(
+                query,
+                isHighlight,
+                title,
+                tags,
+                departmentId,
+                isOnView,
+                artistOrCulture,
+                medium,
+                hasImages,
+                geoLocation,
+                dateBegin,
+                dateEnd
+            )
 
-        return if (searchResponse.isSuccessful) {
-            searchResponse.body()?.objectIDs?.filterNotNull() ?: emptyList()
-        } else {
+            return if (searchResponse.isSuccessful) {
+                searchResponse.body()?.objectIDs?.filterNotNull() ?: emptyList()
+            } else {
+                emptyList()
+            }
+        } catch (e: Throwable) {
             emptyList()
         }
     }
@@ -69,5 +81,20 @@ class MetObjectRepositoryImpl(
         }
 
         return Result.success(objects.awaitAll().filterNotNull())
+    }
+
+    override suspend fun getMetObject(objectID: Int): Result<MetObject> {
+        return try {
+            val cacheObject = dao.getObject(objectID)
+            if (cacheObject == null) {
+                val networkObject = api.getObject(objectID).asMetObjectEntity()
+                dao.insertObject(networkObject)
+                Result.success(networkObject.asMetObject())
+            } else {
+                Result.success(cacheObject.asMetObject())
+            }
+        } catch (e: Throwable) {
+            Result.failure(e)
+        }
     }
 }

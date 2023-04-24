@@ -21,4 +21,6 @@ interface MetObjectRepository {
 
     suspend fun getMetObjects(vararg objectID: Int): Result<List<MetObject>>
 
+    suspend fun getMetObject(objectID: Int): Result<MetObject>
+
 }
