@@ -25,6 +25,8 @@ fun MetNavHost(
                 navController.navigateToDetail(id)
             }
         )
-        detailScreen()
+        detailScreen(onBackClicked = {
+            navController.navigateUp()
+        })
     }
 }

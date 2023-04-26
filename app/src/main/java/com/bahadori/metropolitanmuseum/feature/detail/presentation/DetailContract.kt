@@ -9,10 +9,13 @@ interface DetailContract : UnidirectionalViewModel<DetailContract.Event, DetailC
     data class State(
         val currentObject: MetObject? = null,
         val loading: LoadState = LoadState.Loading(false),
+        val showGallery: Boolean = false,
+        val images: List<String> = emptyList()
     )
 
     sealed class Event {
         data class GetObject(val objectID: Int) : Event()
+        object ShowGallery : Event()
     }
 
 }
