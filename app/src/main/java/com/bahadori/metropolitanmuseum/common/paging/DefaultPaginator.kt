@@ -28,7 +28,9 @@ class DefaultPaginator<Item>(
     private var objectIDs = emptyList<Int>()
 
     override suspend fun loadAllObjectIDs() {
+        onLoadUpdated(true)
         objectIDs = onLoadAllObjects()
+        onLoadUpdated(false)
         reset()
         loadNextItems()
     }
@@ -67,7 +69,7 @@ class DefaultPaginator<Item>(
 
         val to = when {
             objectIDs.isEmpty() -> 0
-            objectIDs.size > currentKey * PAGE_SIZE -> (currentKey * PAGE_SIZE) - 1
+            objectIDs.size > currentKey * PAGE_SIZE -> (currentKey * PAGE_SIZE)
             else -> objectIDs.size
         }
         return IntRange(from, to)
