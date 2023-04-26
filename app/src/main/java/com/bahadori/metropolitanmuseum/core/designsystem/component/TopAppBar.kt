@@ -64,26 +64,17 @@ fun MetTopAppBar(
     )
 }
 
-/**
- * Top app bar with action, displayed on the right
- */
+
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MetTopAppBar(
-    @StringRes titleRes: Int,
+    title: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     colors: TopAppBarColors = TopAppBarDefaults.smallTopAppBarColors(),
 ) {
     TopAppBar(
-        title = {
-            Text(
-                text = stringResource(id = titleRes),
-                style = MaterialTheme.typography.headlineSmall.copy(
-                    fontFamily = FontFamily.Cursive,
-                    fontWeight = FontWeight.Black
-                ),
-            )
-        },
+        title = title,
         colors = colors,
         modifier = modifier,
     )
@@ -94,6 +85,14 @@ fun MetTopAppBar(
 @Composable
 private fun MetTopAppBarPreview() {
     MetTopAppBar(
-        titleRes = R.string.untitled
+        title = {
+            Text(
+                text = stringResource(id = R.string.untitled),
+                style = MaterialTheme.typography.headlineSmall.copy(
+                    fontFamily = FontFamily.Cursive,
+                    fontWeight = FontWeight.Black
+                ),
+            )
+        }
     )
 }

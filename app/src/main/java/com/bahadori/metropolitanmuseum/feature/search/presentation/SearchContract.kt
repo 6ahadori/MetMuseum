@@ -10,7 +10,7 @@ interface SearchContract : UnidirectionalViewModel<SearchContract.Event, SearchC
         val objects: List<MetObject> = listOf(),
         val query: String = "",
         val page: Int = 1,
-        val loading: LoadState = LoadState.Loading(false),
+        val loading: LoadState = LoadState.NotLoading(),
         val endReached: Boolean = false,
     )
 
