@@ -47,6 +47,7 @@ dependencies {
     api(libs.google.truth)
     api(libs.hilt.android.testing)
     api(libs.androidx.compose.ui.test.junit4)
+    debugApi(libs.androidx.compose.ui.test.manifest)
     api(libs.robolectric)
     api(libs.google.truth)
     api(libs.mockito.core)

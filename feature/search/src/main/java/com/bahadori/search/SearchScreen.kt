@@ -90,6 +90,7 @@ internal fun SearchScreen(
             MetTextField(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .testTag("search")
                     .padding(horizontal = 24.dp),
                 label = R.string.search,
                 value = state.query,
@@ -113,7 +114,7 @@ internal fun SearchScreen(
                 modifier = Modifier
                     .padding(top = 16.dp)
                     .fillMaxSize()
-                    .testTag("search"),
+                    .testTag("search_list"),
                 state = gridState,
             ) {
                 items(state.objects.size) { index ->
@@ -151,7 +152,9 @@ internal fun SearchScreen(
             ) + fadeOut(),
         ) {
             LoadingView(
-                modifier = Modifier.align(Alignment.Center),
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .testTag("loading"),
             )
         }
 
@@ -162,7 +165,9 @@ internal fun SearchScreen(
             exit = fadeOut()
         ) {
             Column(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .testTag("empty_list"),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
