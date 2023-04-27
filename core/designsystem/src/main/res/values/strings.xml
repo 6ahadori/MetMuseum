@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">MetMuseum</string>
+    <string name="untitled">"Untitled"</string>
+    <string name="search_screen">Search</string>
+    <string name="detail_screen">Detail</string>
+    <string name="search">Search art object…</string>
+    <string name="metropolitan_museum">Metropolitan Museum Guide</string>
+    <string name="search_icon">Search Icon\n</string>
+    <string name="metropolitan">"Metropolitan "</string>
+    <string name="museum">Museum</string>
+    <string name="artist">"Artist: "</string>
+    <string name="department">"Department: "</string>
+    <string name="year">"Year: "</string>
+    <string name="more">…</string>
+    <string name="geography">"Geography: "</string>
+    <string name="culture">"Culture: "</string>
+    <string name="medium">"Medium: "</string>
+    <string name="dimensions">"Dimensions: "</string>
+    <string name="credit_line">"Credit Line: "</string>
+    <string name="object_image">Object Images</string>
+    <string name="no_item_to_show">There is no item to show</string>
+    <string name="wikipedia_link">Wikipedia Link</string>
+    <string name="wikipedia">Wikipedia</string>
+    <string name="metmuseum_link">MetMuseum Link</string>
+    <string name="metmuseum">MetMuseum</string>
+    <string name="empty_list">Empty List</string>
+</resources>

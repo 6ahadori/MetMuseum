@@ -8,8 +8,8 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.bahadori.metropolitanmuseum.core.designsystem.navigation.Destinations
-import com.bahadori.metropolitanmuseum.feature.search.navigation.searchNavigationRoute
+import com.bahadori.metropolitanmuseum.navigation.Destinations
+import com.bahadori.search.navigation.searchNavigationRoute
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
@@ -44,7 +44,7 @@ class MetAppState(
 
     val currentMetDestination: Destinations?
         @Composable get() = when (currentDestination?.route) {
-            searchNavigationRoute -> Destinations.SearchScreen
+            com.bahadori.search.navigation.searchNavigationRoute -> Destinations.SearchScreen
             else -> null
         }
 }

@@ -4,10 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.bahadori.metropolitanmuseum.feature.detail.navigation.detailScreen
-import com.bahadori.metropolitanmuseum.feature.detail.navigation.navigateToDetail
-import com.bahadori.metropolitanmuseum.feature.search.navigation.searchNavigationRoute
-import com.bahadori.metropolitanmuseum.feature.search.navigation.searchScreen
+import com.bahadori.detail.navigation.detailScreen
+import com.bahadori.detail.navigation.navigateToDetail
+import com.bahadori.search.navigation.searchNavigationRoute
+import com.bahadori.search.navigation.searchScreen
 
 @Composable
 fun MetNavHost(

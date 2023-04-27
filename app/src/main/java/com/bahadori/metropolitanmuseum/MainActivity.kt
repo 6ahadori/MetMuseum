@@ -15,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @ExperimentalMaterial3WindowSizeClassApi
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splashScreen = installSplashScreen()
+        installSplashScreen()
         super.onCreate(savedInstanceState)
 
         // Turn off the decor fitting system windows, which allows us to handle insets,
