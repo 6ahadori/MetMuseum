@@ -10,6 +10,9 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 
+/**
+ * Module for Object which provides MetObjectRepository
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object ObjectModule {

@@ -6,6 +6,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
+
+/**
+ * Module for DAO which provides MetObjectDao to access database methods
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object DaoModule {

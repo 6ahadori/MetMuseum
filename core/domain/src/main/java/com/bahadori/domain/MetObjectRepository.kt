@@ -1,7 +1,8 @@
 package com.bahadori.domain
 
-import com.bahadori.model.MetObject
-
+/**
+ * MetObjectRepository is the repository for
+ */
 interface MetObjectRepository {
 
     suspend fun search(

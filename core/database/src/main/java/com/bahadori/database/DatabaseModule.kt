@@ -9,6 +9,11 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
+
+/**
+ * Module for Database which provides MetDatabase
+ * @see MetDatabase
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
