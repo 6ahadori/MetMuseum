@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.bahadori.metropolitanmuseum.core.designsystem.preview.ThemePreviews
+import com.bahadori.designsystem.preview.ThemePreviews
 import com.bahadori.metropolitanmuseum.core.designsystem.theme.MetTheme
 
 @Composable

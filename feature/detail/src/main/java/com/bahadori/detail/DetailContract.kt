@@ -1,6 +1,6 @@
 package com.bahadori.detail
 
-import com.bahadori.metropolitanmuseum.core.designsystem.UnidirectionalViewModel
+import com.bahadori.designsystem.UnidirectionalViewModel
 
 interface DetailContract : UnidirectionalViewModel<DetailContract.Event, DetailContract.State> {
 

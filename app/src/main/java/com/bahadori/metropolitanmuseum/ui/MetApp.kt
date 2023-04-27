@@ -38,7 +38,7 @@ import com.bahadori.metropolitanmuseum.R
 import com.bahadori.designsystem.component.MetBackground
 import com.bahadori.designsystem.component.MetTopAppBar
 import com.bahadori.metropolitanmuseum.navigation.Destinations
-import com.bahadori.metropolitanmuseum.core.designsystem.theme.gold
+import com.bahadori.designsystem.theme.gold
 import com.bahadori.metropolitanmuseum.navigation.MetNavHost
 
 @OptIn(

@@ -1,4 +1,4 @@
-package com.bahadori.metropolitanmuseum.core.designsystem.theme
+package com.bahadori.designsystem.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf

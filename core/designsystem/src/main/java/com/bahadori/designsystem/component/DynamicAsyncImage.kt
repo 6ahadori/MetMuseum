@@ -11,7 +11,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.bahadori.metropolitanmuseum.core.designsystem.theme.LocalTintTheme
+import com.bahadori.designsystem.theme.LocalTintTheme
 
 /**
  * A wrapper around [AsyncImage] which determines the colorFilter based on the theme

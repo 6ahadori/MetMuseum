@@ -1,4 +1,4 @@
-package com.bahadori.metropolitanmuseum.core.designsystem.preview
+package com.bahadori.designsystem.preview
 
 import android.content.res.Configuration
 import androidx.compose.ui.tooling.preview.Preview

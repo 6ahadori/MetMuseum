@@ -1,6 +1,6 @@
 package com.bahadori.search
 
-import com.bahadori.metropolitanmuseum.core.designsystem.UnidirectionalViewModel
+import com.bahadori.designsystem.UnidirectionalViewModel
 
 interface SearchContract : UnidirectionalViewModel<SearchContract.Event, SearchContract.State> {
 

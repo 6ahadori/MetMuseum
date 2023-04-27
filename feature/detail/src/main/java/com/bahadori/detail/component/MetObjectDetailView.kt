@@ -34,7 +34,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import com.bahadori.designsystem.icon.MetIcons
 import com.bahadori.designsystem.R
-import com.bahadori.metropolitanmuseum.core.designsystem.theme.gold
+import com.bahadori.designsystem.theme.gold
 
 
 @Composable
