@@ -1,6 +1,6 @@
 package com.bahadori.designsystem.base
 
-import com.bahadori.metropolitanmuseum.core.designsystem.BaseUnidirectionalViewModel
+import com.bahadori.designsystem.BaseUnidirectionalViewModel
 
 
 interface BaseContract :

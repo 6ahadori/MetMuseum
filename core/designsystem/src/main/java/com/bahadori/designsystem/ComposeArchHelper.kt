@@ -1,4 +1,4 @@
-package com.bahadori.metropolitanmuseum.core.designsystem
+package com.bahadori.designsystem
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

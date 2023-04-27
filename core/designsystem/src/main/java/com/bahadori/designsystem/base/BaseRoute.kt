@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import com.bahadori.metropolitanmuseum.core.designsystem.collectInLaunchedEffect
-import com.bahadori.metropolitanmuseum.core.designsystem.useBase
+import com.bahadori.designsystem.collectInLaunchedEffect
+import com.bahadori.designsystem.useBase
 import com.bahadori.designsystem.component.ErrorView
 import com.bahadori.designsystem.component.LoadingView
 
