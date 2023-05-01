@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -30,6 +31,7 @@ import com.bahadori.detail.DetailContract.*
 import com.bahadori.detail.component.GalleyView
 import com.bahadori.detail.component.MetObjectDetailView
 import com.bahadori.detail.component.NoObject
+
 
 
 @Composable
@@ -82,7 +84,7 @@ fun DetailScreen(
         OutlinedIconButton(
             modifier = Modifier
                 .align(Alignment.TopStart)
-                .padding(16.dp, 48.dp), onClick = onBackClicked,
+                .padding(16.dp, 48.dp).testTag("back_button"), onClick = onBackClicked,
             border = BorderStroke(0.5.dp, Color.White.copy(alpha = 0.5f)),
             colors = IconButtonDefaults.outlinedIconButtonColors(contentColor = Color.White)
         ) {
@@ -98,7 +100,8 @@ fun DetailScreen(
                 OutlinedIconButton(
                     modifier = Modifier
                         .align(Alignment.TopEnd)
-                        .padding(16.dp, 48.dp),
+                        .padding(16.dp, 48.dp)
+                        .testTag("camera_button"),
                     border = BorderStroke(0.5.dp, Color.White.copy(alpha = 0.5f)),
                     onClick = onGalleryClicked,
                     colors = IconButtonDefaults.outlinedIconButtonColors(contentColor = Color.White)
@@ -111,7 +114,7 @@ fun DetailScreen(
                 }
 
             MetObjectDetailView(
-                modifier = Modifier.align(Alignment.BottomCenter),
+                modifier = Modifier.align(Alignment.BottomCenter).testTag("detail_view"),
                 metObject = state.currentObject
             )
 
@@ -121,11 +124,11 @@ fun DetailScreen(
                 exit = fadeOut()
             ) {
                 GalleyView(
-                    modifier = Modifier,
+                    modifier = Modifier.testTag("gallery"),
                     images = state.images
                 )
             }
 
-        } ?: NoObject(modifier = Modifier.align(Alignment.BottomCenter))
+        } ?: NoObject(modifier = Modifier.align(Alignment.BottomCenter).testTag("no_object"))
     }
 }

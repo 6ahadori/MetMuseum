@@ -40,11 +40,10 @@ class SearchScreenTest {
         }
 
         // Assert that the loading view is displayed
-        composeTestRule.onNodeWithTag("loading")
+        composeTestRule.onNodeWithTag("loading_")
             .assertIsDisplayed()
     }
 
-    @SuppressLint("StateFlowValueCalledInComposition")
     @Test
     fun testNoLoadingViewWhenObjectsAreNotEmptyOrLoadStateIsNotLoading() {
         // Set the state with non-empty objects and a non-loading load state
@@ -72,7 +71,6 @@ class SearchScreenTest {
             .assertDoesNotExist()
     }
 
-    @SuppressLint("StateFlowValueCalledInComposition")
     @Test
     fun testShowColumnWithNoItemToShowTextWhenTextFieldIsEmpty() {
         // Set the state with an empty query and no objects
@@ -94,7 +92,6 @@ class SearchScreenTest {
             .assertIsDisplayed()
     }
 
-    @SuppressLint("StateFlowValueCalledInComposition")
     @Test
     fun testShowLazyColumnWhenQueryEnteredAndDataRetrievedSuccessfully() = runTest {
         // Set the state with a non-empty query and some objects
