@@ -21,10 +21,15 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+
 }
 
 dependencies {
@@ -48,7 +53,6 @@ dependencies {
     api(libs.hilt.android.testing)
     api(libs.androidx.compose.ui.test.junit4)
     debugApi(libs.androidx.compose.ui.test.manifest)
-    api(libs.robolectric)
     api(libs.google.truth)
     api(libs.mockito.core)
     api(libs.mockito.kotlin)
